@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --clr-dark: #686767;
+    --clr-text-primary: rgb(20, 19, 19);
+    --clr-slate: #427D9D;
+    /* --clr-primary: #F4EAE0; */
+    --clr-bg: #ffffff;
+    --clr-btn-hover: #1e40af;
+    --clr-btn-primary: #1d4ed8;
+    --max-width: 1200px
+    
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--clr-bg);
+}
+
+img {
+    max-width: 100%;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+nav, footer {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-img {
+    width: 100px;
+}
+
+.profile-img a img {
+    border-radius: 50%;
+    border: 3px solid black;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.link a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--clr-text-primary)
+}
+
+.link a:after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background-color: var(--clr-dark);
+    transition: all 0.3s ease;
+}
+
+.link a:hover::after {
+    width: 70%;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    background-color: var(--clr-btn-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    border: 2px solid black;
+    cursor: pointer;
+    color: var(--clr-bg);
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+background-color: var(--clr-btn-hover);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 4rem 2rem;
+}
+
+header {
+    position: relative;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+header .content h1 {
+    margin-bottom: 1rem;
+    color: var(--clr-text-primary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* header .content h1 span  {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px var(--clr-text-primary);
+} */
+
+header .content p {
+    margin-bottom: 2rem;
+    color: var(--clr-text-primary);
+    font-size: 1rem;
+}
+
+header .image img {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* This is the section for the projects */
+section {
+    position: relative;
+    padding-top: 2.5rem;
+}
+
+section .sub-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .sub-header h2{
+    max-width: 600px;
+    margin-bottom: 1rem;
+    color: var(--clr-text-primary);
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+section .wrapper {
+    position: relative;
+    padding-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+.wrapper .card {
+    padding: 2rem 1rem;
+    border-radius: 32px;
+    border: 3px solid black;
+    transition: all 0.3s ease;
+}
+
+.wrapper .card:hover {
+    box-shadow: 0px 16px 10px var(--clr-dark);
+}
+
+
+.card-body h5 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--clr-text-primary)
+}
+
+.card-body p {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    color: var(--clr-text-primary)
+}
+
+.card-link {
+    color: var(--clr-dark);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.card-link:hover {
+    color: black;
+}
+
+/* This is the section for the footer */
+
+footer {
+    position: relative;
+    flex-direction: column;
+}
+
+
+
+.footer-container .icons {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 0rem 1rem;
+    
+}
+
+.copyright h5 {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* .footer-container .icons>li a img {
+    padding: 1rem 0.75rem;
+    transition: all 0.3s ease;
+}
+
+
+.footer-container .icons>li a img:hover {
+    color: white;
+} */
+
+
+@media (width < 900px) {
+   
+    header{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    header .image {
+        grid-area: 1/1/2/1;
+        /* grid-area: row-start col-start row-end col-end */
+    }
+
+    section .wrapper{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (width < 650px) {
+    body {
+        max-width: 650px;
+    }
+
+    .nav-links li a {
+        font-size: 16px;
+        transition: all 0.3 ease;
+    }
+
+    .profile-img {
+        width: 75px;
+    }
+}
