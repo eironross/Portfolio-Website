@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Website | Eiron Ross</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="../Portfolio Website/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/style.css') }}">
+    
 </head>
 <body>
     <nav class="mainNav">
         <div class="profile-img">
-            <a href="#"><img src="../Portfolio Website/img/profile-1.JPG"></a>
+            <a href="#"><img src="{{ url_for('static', filename='/img/profile-1.JPG') }}"></a>
         </div>
         <ul class="nav-links">
             <!-- <li><a href="#">Home</a></li> -->
-            <li class="link"><a href="#">Projects</a></li>
+            <li class="link"><a href="#">Home</a></li>
+            <!-- <li class="link"><a href="#">Projects</a></li> -->
             <li class="link"><a href="#">About</a></li>
             <li class="link"><a href="#">Contact Me</a></li>
         </ul>
@@ -23,40 +25,74 @@
     <header class="container">
             <div class="content">
                 <h1>Hi,👋 I'm <span>Eiron Ross</span> </h1>
-                <p>I'm an aspiring full stack developer. I'm working on the some of my personal projects and will be published on this page. Feel free to explore this website</p>
+                <p>I'm an aspiring web developer. I mainly use Python to create general purpose scripts, gathering and compiling data. I'm working on the some of my personal projects and will be published on this page. Feel free to explore this website</p>
                 <button class="btn" type="button">Download CV</button>
                 <!-- <button class="btn" type="button">Contact</button> -->
             </div>
             <div class="image"> 
-                <img src="./img/nt-woman-typing-on-machine.svg" alt="">
+                <img src="{{ url_for('static', filename='/img/nt-ranking.svg') }}" alt="">
             </div>
     </header>
     <section class="container">
         <div class="sub-header">
-            <h2>Capstone Projects</h2>
+            <h2> Projects</h2>
         </div>
         <div class="wrapper">
             <div class="card">
+                <div class="link-image">
+                    <img src="{{ url_for('static', filename='/img/img-blog.png') }}">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title">Blog Site</h5>
-                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat molestias fuga quia magnam distinctio quaerat! Magni ex, odio nesciunt voluptate aliquid obcaecati, quas voluptatum fugiat placeat repudiandae debitis delectus adipisci.</p>
+                    <p class="card-text">Created a blogsite using Flask as my capstone project. To understand the full-stack development. I have used the SQLite for the database and used the SQLAlchemy for the ORM. </p>
+                    <ul class="stack">
+                        <li>Python</li>
+                        <li>Flask</li>
+                        <li>SQLite</li>
+                        <li>SQLAlchemy</li>
+                        <li>Bootstrap</li>
+                    </ul>
                     <a href="#" class="card-link">Show More</a>
                 </div>
             </div>
+
             <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">KPI Dashboard</h5>
-                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat molestias fuga quia magnam distinctio quaerat! Magni ex, odio nesciunt voluptate aliquid obcaecati, quas voluptatum fugiat placeat repudiandae debitis delectus adipisci.</p>
-                    <a href="#" class="card-link">Show More</a>
+                <div class="link-image">
+                    <img src="{{ url_for('static', filename='/img/img-api.png') }}">
                 </div>
-            </div>
-            <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">API Resume</h5>
-                    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat molestias fuga quia magnam distinctio quaerat! Magni ex, odio nesciunt voluptate aliquid obcaecati, quas voluptatum fugiat placeat repudiandae debitis delectus adipisci.</p>
+                    <p class="card-text">Created an API version of my Resume using FastAPI. To understand the concepts of REST API, Requests &
+                        Response and JSON.</p>
+                    <ul class="stack">
+                        <li>Python</li>
+                        <li>FastAPI</li>
+                        <li>JSON</li>
+                        <li>HTTP Request</li>
+                    </ul>
+                    <a href="/api-documentation" class="card-link">Show More</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="link-image">
+                    <img src="{{ url_for('static', filename='/img/img-downloaders.png') }}">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Market Data & MAXIMO Logs Downloader</h5>
+                    <p class="card-text">Developed a program that will download data from the Web using Selenium. This reduces that time in
+                        gathering and moving data to the QNAP.</p>
+                    <ul class="stack">
+                        <li>Python</li>
+                        <li>Selenium</li>
+                        <li>Web Scraping</li>
+                        <li>Pandas</li>
+                    </ul>
                     <a href="#" class="card-link">Show More</a>
                 </div>
             </div>
+
+            
         </div>
         <!-- <div class="card" style="width: 18rem;">
             <img src="./img/profile-1.jpg" class="card-img-top" alt="...">
@@ -72,8 +108,27 @@
         </div> -->
     </section>
     
+    <section class="container">
+        <div class="sub-header">
+            <h2> About me</h2>
+        </div>
+        <div class="wrapper about">
+            <div class="image"> 
+                <img class="profile-picture" src="{{ url_for('static', filename='/img/profile.JPG') }}" alt="">
+            </div>
+            <div class="content about-me">
+                <h3>Hi, Everyone👋</h3>
+                <p>I started learning programming about 2 years ago and used python to automate my work using libraries such as Selenium and Pandas. I wanted to learn to code to upskill myself and be part of the growing tech industry.</p>
+                <p>Right now, I'm attending a bootcamp to study about the web development. There is this coolness of being a web developer wherein you can combine the creativity and technical aspects in developing web applications. </p>
+                <!-- <button class="btn" type="button">Contact</button> -->
+            </div>
+            
+        </div>
+        
+    </section>
 <!-- 
     <section>
+        
         <div class="project-section">
             <div class="card" style="width: 18rem;">
                 <img src="./img/profile-1.jpg" class="card-img-top">
@@ -128,10 +183,9 @@
     <footer>
         <div class="footer-container">
             <ul class="icons">
-                <li><a href="#"><img src="./img/icons8-github.svg" alt=""></a></li>
-                <li><a href="#"><img src="./img/icons8-linkedin.svg" alt=""></a></li>
-                <li><a href="#"><img src="./img/icons8-facebook.svg" alt=""></a></li>
-                <li><a href="#"><img src="./img/icons8-instagram.svg" alt=""></a></li>                
+                <li><a href="#"><img src="{{ url_for('static', filename='/img/icons8-github.svg') }}" alt=""></a></li>
+                <li><a href="#"><img src="{{ url_for('static', filename='/img/icons8-instagram.svg') }}" alt=""></a></li>
+                <li><a href="#"><img src="{{ url_for('static', filename='/img/icons8-linkedin.svg')}}" alt=""></a></li>                
             </ul>
         </div>
         <div class="copyright">

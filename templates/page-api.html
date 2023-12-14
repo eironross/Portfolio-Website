@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href=" {{ url_for('static', filename='/styles/style-api.css')}} "
+    />
+    <title>Resume API Documentation</title>
+  </head>
+  <body>
+    <nav class="mainNav">
+      <div class="profile-img">
+        <a href="{{ url_for('home')}}"
+          ><img src="{{ url_for('static', filename='/img/profile-1.JPG') }}"
+        /></a>
+      </div>
+      <ul class="nav-links">
+        <!-- <li><a href="#">Home</a></li> -->
+        <li class="link"><a href="{{ url_for('home')}}">Home</a></li>
+        <!-- <li class="link"><a href="#">Projects</a></li> -->
+        <li class="link"><a href="#">About</a></li>
+        <li class="link"><a href="#">Contact Me</a></li>
+      </ul>
+      <!-- <button class="btn">Hire Me</button> -->
+    </nav>
+    <header class="container">
+      <div class="banner-img">
+        <img src=" {{ url_for('static', filename='/img/banner.png')}} " />
+      </div>
+
+      <h1>Resume API Documentation</h1>
+      <p>
+        Welcome to my Resume API. Requests are rate limited to 10 requests every
+        1 minute.
+      </p>
+      <!-- <button class="btn" type="submit" value="ok">Try API</button> -->
+    </header>
+    <section class="container">
+      <h2>Get a Random Information</h2>
+      <p>Returns a randomly selected information from the resume</p>
+
+      <div class="example">
+        <p>
+          <strong>Example Request:</strong>
+        </p>
+        <div class="request">
+          <code>
+            <span class="get-method">GET</span>
+            https://api-resume-flores.app/random
+          </code>
+        </div>
+        <p>
+          <strong>Example Response:</strong>
+        </p>
+        <div class="response">
+          <pre>
+<code>{
+    "name": "Eiron Ross Flores",
+    "contact": "09494780589",
+    "address": "Angat, Bulacan",
+    "email": "eironflores27@gmail.com",
+    "education": [
+        {
+            "school": "Pamantasan ng Lungsod ng Manila",
+            "degree": "Bachelor of Science in Electrical Engineering",
+            "date-graduated": "April 2018",
+            "is-graduated": "True"
+        }
+    ]
+}
+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Filter Resume</h2>
+      <p>Returns part of resume filtered by type</p>
+      <ul class="optional-list">
+        <li>
+          type (Optional): Filter by type. Choice of <code>info</code>,
+          <code>work-experience</code>, <code>skills</code>,
+          <code>socials</code>, <code>license</code>,
+          <code>certifications</code>, <code>projects</code>,
+          <code>about-me</code>
+        </li>
+      </ul>
+      <div class="example">
+        <p>
+          <strong>Example Request:</strong>
+        </p>
+        <div class="request">
+          <code>
+            <span class="get-method">GET</span>
+            https://api-resume-flores.vercel.app/resume?type=socials
+          </code>
+        </div>
+        <p>
+          <strong>Example Response:</strong>
+        </p>
+        <div class="response">
+          <pre>
+<code>{
+    "socials": {
+        "linkedin": "https://linkedin.com/in/eironross",
+        "github": "https://github.com/eironross"
+    }
+}
+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Filter Work Experience</h2>
+      <p>Returns a list of work experience can be filtered by id</p>
+      <ul class="optional-list">
+        <li>exp_id (Optional): Filter by id. Choice of 1</li>
+      </ul>
+      <div class="example">
+        <p>
+          <strong>Example Request</strong>
+        </p>
+        <div class="request">
+          <code>
+            <span class="get-method">GET</span>
+            https://api-resume-flores.vercel.app/work-exp?exp_id=1
+          </code>
+        </div>
+        <p>
+          <strong>Example Response</strong>
+        </p>
+        <div class="response">
+          <pre>
+<code>{
+    "work-experience": {
+        "id": 1,
+        "job": {
+            "position": "Assistant Energy Trader",
+            "company": "GNPower Kauswagan Ltd. Co.",
+            "address": "Mariveles, Bataan",
+            "job-descriptions": {
+                "item-1": "Built a Market Data downloader using Python via Selenium to save time in gathering data.",
+                "item-2": "Created a Reporting Program using Excel VBA, reduced time in creating reports",
+                "item-3": "Built a market data compiler using Python to be used in compiling data and analysis",
+                "item-4": "Monitors the Real-Time Dispatch, Compliances, and Market Prices in MPI.",
+                "item-5": "Submission of documents for the Reportorial Requirements and Compliance Post-Evaluation Management Systems (CPEMS).",
+                "item-6": "Assist in coordinating with the Operations & Maintenance (O&M), Market Operators, and System Operators and preparation of any-trading related data and documents",
+                "item-7": "Assist in coordination with the Buyers on their Nomination (Daily, Weekly, Monthly, and Realtime)."
+            },
+            "start-date": "March 19, 2018",
+            "end-start": "August 31, 2023",
+            "years-accumulated": "4.5 years",
+            "currently-at-the-company": "False"
+        }
+    }
+}
+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Filter Projects</h2>
+      <p>Returns a list of projects can be filtered by id</p>
+      <ul class="optional-list">
+        <li>project_id (Optional): Filter by id. Choice of 1, 2, 3, 4</li>
+      </ul>
+      <div class="example">
+        <p>
+          <strong>Example Request</strong>
+        </p>
+        <div class="request">
+          <code>
+            <span class="get-method">GET</span>
+            https://api-resume-flores.vercel.app/filter-project?project_id=1
+          </code>
+        </div>
+        <p>
+          <strong>Example Response</strong>
+        </p>
+        <div class="response">
+          <pre>
+<code>{
+    "project": {
+        "id": 1,
+        "project-name": "API Resume",
+        "description": "An API based resume which can returns info of my resume base on the request from the client",
+        "tech": "FastAPI",
+        "created-year": "2023"
+    }
+}
+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <h2>Filter Certifications</h2>
+      <p>Returns a list of certifications can be filtered by id</p>
+      <ul class="optional-list">
+        <li>cert_id (Optional): Filter by id. Choice of 1, 2, 3</li>
+      </ul>
+      <div class="example">
+        <p>
+          <strong>Example Request</strong>
+        </p>
+        <div class="request">
+          <code
+            ><span class="get-method">GET</span>
+            https://api-resume-flores.vercel.app/filter-project?project_id=1</code
+          >
+        </div>
+        <p><strong>Example Response</strong></p>
+        <div class="response">
+          <pre>
+<code>{
+    "certification": {
+        "id": 1,
+        "title": "100 Days of Code: The Complete Python Pro Bootcamp for 2023",
+        "issued-by": "Udemy",
+        "issued-date": "November 2023",
+        "credential-id": "UC-25955a6a-cce4-41cb-8f22-7d4a48dbab0e"
+    }
+}
+</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- next section -->
+    <footer>
+      <p class="copyright">API Resume 2023 By Eiron Ross Flores</p>
+    </footer>
+  </body>
+</html>
